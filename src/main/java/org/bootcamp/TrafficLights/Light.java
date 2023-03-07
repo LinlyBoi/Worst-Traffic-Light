@@ -33,7 +33,7 @@ public class Light extends JPanel implements Runnable {
     this();
     this.timeout = timeout;
     this.color = color;
-    this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
+    // this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 10));
     setVisible(false);
     setBackground(Color.BLACK);
   }
@@ -42,21 +42,21 @@ public class Light extends JPanel implements Runnable {
     setVisible(true);
 
     try {
-      TimeUnit.SECONDS.sleep(timeout);
+      TimeUnit.SECONDS.sleep(timeout - 2);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    setVisible(false);
-    // flicker();
+    flicker();
   }
 
   public void flicker() {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
 
       try {
         setVisible(false);
-        TimeUnit.MILLISECONDS.sleep(500);
+        TimeUnit.MILLISECONDS.sleep(250);
         setVisible(true);
+        TimeUnit.MILLISECONDS.sleep(250);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
