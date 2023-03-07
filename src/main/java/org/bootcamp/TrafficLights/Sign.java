@@ -16,6 +16,6 @@ public class Sign extends JFrame {
     this.setPreferredSize(new Dimension(300, 300));
     this.setLocationRelativeTo(null);
     this.setVisible(true);
-    this.setBackground(Color.BLACK);
+    this.getContentPane().setBackground(Color.BLACK);
   }
 }
