@@ -31,12 +31,15 @@ public class Traffic {
     Traffic_Sign.add(StopButton, 3);
 
     while (true) {
-      red_thread.run();
-      if (pressed) break;
-      yellow_thread.run();
-      if (pressed) break;
-      green_thread.run();
-      if (pressed) break;
+      red_thread.start();
+      if (pressed)
+        break;
+      yellow_thread.start();
+      if (pressed)
+        break;
+      green_thread.start();
+      if (pressed)
+        break;
     }
   }
 }
