@@ -7,6 +7,7 @@ public class Traffic {
   public static boolean pressed = false;
 
   public static void main(String[] args) {
+    // Countdowns
     // Lights
     Redlight redlight = new Redlight();
     Yellowlight yellowlight = new Yellowlight();
@@ -19,9 +20,9 @@ public class Traffic {
     Traffic_Sign.add(greenlight, 2);
 
     // Threads
-    Thread red_thread = new Thread(redlight);
-    Thread yellow_thread = new Thread(yellowlight);
-    Thread green_thread = new Thread(greenlight);
+    // Thread red_thread = new Thread(redlight);
+    // Thread yellow_thread = new Thread(yellowlight);
+    // Thread green_thread = new Thread(greenlight);
     // Button
     JButton StopButton = new JButton("STOP");
     StopButton.addActionListener(
@@ -31,13 +32,31 @@ public class Traffic {
     Traffic_Sign.add(StopButton, 3);
 
     while (true) {
+      Thread red_thread = new Thread(redlight);
+      Thread yellow_thread = new Thread(yellowlight);
+      Thread green_thread = new Thread(greenlight);
       red_thread.start();
+      try {
+        red_thread.join();
+      } catch (InterruptedException e1) {
+        e1.printStackTrace();
+      }
       if (pressed)
         break;
       yellow_thread.start();
+      try {
+        yellow_thread.join();
+      } catch (InterruptedException e1) {
+        e1.printStackTrace();
+      }
       if (pressed)
         break;
       green_thread.start();
+      try {
+        green_thread.join();
+      } catch (InterruptedException e1) {
+        e1.printStackTrace();
+      }
       if (pressed)
         break;
     }

@@ -5,6 +5,6 @@ import java.awt.Color;
 public class Yellowlight extends Light {
 
   Yellowlight() {
-    super(5, Color.YELLOW);
+    super(2, Color.YELLOW);
   }
 }
